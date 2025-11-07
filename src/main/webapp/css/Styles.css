@@ -1,0 +1,533 @@
+@charset "UTF-8";
+/* VARIÁVEIS DE CORES */
+:root {
+  --marrom-escuro: #3E2C20;
+  --marrom: #6B4226;
+  --marrom-claro: #8B5E3C;
+  --bege: #D9C9B6;
+  --offwhite: #FBF9F6;
+  --accent: #A67C52;
+}
+
+/* =============================== */
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, var(--bege) 0%, var(--offwhite) 100%);
+  color: var(--marrom-escuro);
+}
+
+/* =============================== */
+/* HEADER E MENU */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: var(--marrom);
+  color: white;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 1rem;
+}
+
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+header .logo {
+  background: var(--bege);
+  color: var(--marrom-escuro);
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header nav a,
+header nav button {
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  transition: color 0.2s, background 0.2s;
+}
+
+header nav a:hover,
+header nav button:hover {
+  color: var(--accent);
+}
+
+header nav .bem-vindo {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  color: #fff;
+}
+
+/* Ícone de menu (hambúrguer) */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* =============================== */
+/* MAIN */
+main {
+  max-width: 2200px;
+  margin: 1rem auto;
+  padding: 1%;
+}
+
+/* =============================== */
+/* CARD */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* =============================== */
+/* SLIDER */
+.slider-container {
+  position: relative;
+  max-width: 900px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .25);
+  height: 350px;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.slides a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.slides a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Botões de navegação */
+.slider-container button.prev,
+.slider-container button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 10;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.slider-container button.prev:hover,
+.slider-container button.next:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-container button.prev {
+  left: 10px;
+}
+
+.slider-container button.next {
+  right: 10px;
+}
+
+/* =============================== */
+/* CHAMARISCOS */
+.chamariscos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.chamariscos .card {
+  flex: 1 1 250px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f5f5f5;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  min-width: 180px;
+}
+
+/* =============================== */
+/* HOME LINKS */
+.home-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.home-links button {
+  padding: .7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.home-links button:hover {
+  transform: scale(1.05);
+}
+
+/* =============================== */
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* =============================== */
+/* FORMULÁRIOS */
+.formulario {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.formulario h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--marrom-escuro);
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 0.9rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.formulario button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--marrom);
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.formulario button:hover {
+  background: var(--marrom-escuro);
+}
+
+/* Estilos específicos para cada formulário */
+#form-cliente {
+  border-left: 8px solid var(--accent);
+}
+
+#form-fornecedor {
+  border-left: 8px solid var(--marrom-claro);
+}
+
+/* =============================== */
+/* BOTÃO VENDA DE PEÇAS */
+#btnVendaPecas {
+  background: linear-gradient(135deg, #A67C52, #6B4226);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#btnVendaPecas:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #8B5E3C, #3E2C20);
+}
+
+#btnVendaPecas img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* =============================== */
+/* CATÁLOGO */
+#catalogoLista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.produto-card {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 0 1 280px;
+}
+
+.produto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.produto-card h3 {
+  font-size: 1.2rem;
+  color: var(--marrom-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.produto-card p {
+  font-size: 0.9rem;
+  color: var(--marrom);
+  margin-bottom: 0.75rem;
+}
+
+.produto-card button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Botão de "Adicionar ao Carrinho" */
+.produto-card button:not([disabled]) {
+  background-color: var(--marrom);
+  color: white;
+}
+
+.produto-card button:not([disabled]):hover {
+  background-color: var(--marrom-escuro);
+}
+
+/* Botão quando está desabilitado */
+.produto-card button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Botões de Editar e Excluir */
+.produto-card button:nth-of-type(2) {
+  background-color: var(--accent);
+  color: white;
+}
+
+.produto-card button:nth-of-type(3) {
+  background-color: #c0392b; /* Um tom de vermelho */
+  color: white;
+}
+
+/* =============================== */
+/* BOTÕES GERAIS (LOGIN, PERFIL, ETC.) */
+.btn {
+  background: linear-gradient(135deg, var(--accent), var(--marrom-claro));
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, var(--marrom-claro), var(--marrom-escuro));
+}
+
+/* Botão de perfil dentro do header */
+#btnPerfil {
+  background: var(--marrom);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+#btnPerfil:hover {
+  background: var(--marrom-escuro);
+  transform: translateY(-1px);
+}
+
+/* Botão "Esqueci minha senha" específico */
+#btnEsqueciSenha {
+  background: var(--bege);
+  color: var(--marrom-escuro);
+  font-weight: 600;
+}
+
+#btnEsqueciSenha:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Botão "Criar conta" */
+#btnCriarConta {
+  background: var(--marrom);
+  color: white;
+  font-weight: 600;
+}
+
+#btnCriarConta:hover {
+  background: var(--marrom-escuro);
+  transform: translateY(-1px);
+}
+
+/* =============================== */
+/* MENU RESPONSIVO */
+@media (max-width: 768px) {
+  header .logo {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    background: var(--marrom);
+    width: 100%;
+    padding: 1rem;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    border-radius: 0 0 10px 10px;
+    gap: 1rem;
+    z-index: 1000;
+  }
+
+  header nav.show {
+    display: flex;
+  }
+
+  header nav a,
+  header nav button {
+    margin: 0.5rem 0;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+}
+
+/* =============================== */
+/* RESPONSIVO SLIDER */
+@media (max-width: 1024px) {
+  .slider {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 150px;
+  }
+}
