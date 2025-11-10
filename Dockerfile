@@ -35,8 +35,12 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
  
 
 # Copia arquivos da aplicação compilada 
-COPY src/main/webapp /usr/local/tomcat/webapps/Brec_Brecho/ 
-COPY --from=build /app/build/classes /usr/local/tomcat/webapps/Brec_Brecho/WEB-INF/classes 
+#COPY src/main/webapp /usr/local/tomcat/webapps/Brec_Brecho/ 
+#COPY --from=build /app/build/classes /usr/local/tomcat/webapps/Brec_Brecho/WEB-INF/classes 
+
+COPY src/main/webapp /usr/local/tomcat/webapps/ROOT/ 
+
+COPY --from=build /app/build/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes 
 
  
 # Expõe a porta padrão do Tomcat 
