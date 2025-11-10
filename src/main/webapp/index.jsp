@@ -1,4 +1,5 @@
 <%-- /index.jsp --%>
+<%@page import="br.com.brecbrecho.util.ConexaoDB"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -22,6 +23,18 @@
     <jsp:include page="partes/header.jsp" />
 
     <main>
+      <form action='index.jsp'>
+          <button name="acao" value="conectar">conectar</button>
+      </form>
+        <%
+           String acao = request.getParameter("acao");
+        if("conectar".equals(acao)){
+        	if(ConexaoDB.getConexao() != null){
+        		out.print("conecytad");
+        	}
+        }
+           
+        %>
         <section id="home" class="card">
             <h2>Bem-vinda ao Brec Brechó</h2>
             <p class="small">Explore, cadastre-se e contribua para a moda circular.</p>

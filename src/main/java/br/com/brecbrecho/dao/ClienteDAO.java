@@ -4,13 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-// Importa sua classe de conexão
-import br.com.brecbrecho.util.ConexaoDB;
+
+
 // Importa o Model
 import br.com.brecbrecho.model.Cliente;
+// Importa sua classe de conexão
+import br.com.brecbrecho.util.ConexaoDB;
 
 public class ClienteDAO {
 
@@ -142,6 +146,52 @@ public class ClienteDAO {
 			return false;
 		}
 	}
+	public List<Cliente> listarTodosClientes() {
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT * FROM Cliente ORDER BY nome";
+        
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            
+            while(rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("id_cliente"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setEstado(rs.getString("estado"));
+                clientes.add(cliente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clientes;
+    }
+
+    /**
+     * (ADMIN) Exclui um cliente pelo ID.
+     * CUIDADO: Isso pode falhar se o cliente tiver Pedidos (chave estrangeira).
+     * Para um projeto escolar, podemos desativar a chave ou deletar em cascata.
+     * Por enquanto, vamos assumir que pode falhar.
+     */
+    public boolean excluirCliente(int idCliente) {
+        String sql = "DELETE FROM Cliente WHERE id_cliente = ?";
+        
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, idCliente);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            // Provavelmente uma falha de chave estrangeira (cliente tem pedidos)
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 	// TODO: Criar método para deletar conta
 	// public boolean deletarCliente(int idCliente) { ... }

@@ -106,6 +106,20 @@
             </c:choose>
             
         </section>
+        
+        
+        </section>
+
+    <%-- NOVO MENU DE NAVEGAÇÃO DO ADMIN --%>
+    <section class="card" style="margin-top: 1rem; background-color: #f9f9f9;">
+        <strong>Navegação do Painel:</strong>
+        <div style="display:flex; gap: 10px; margin-top: 10px;">
+            <a href="verMensagens"><button>Ver Mensagens SAC</button></a>
+           
+            <a href="gerenciarUsuarios"><button>Gerenciar Usuários</button></a>
+            <a href="gerenciarProdutos"><button>Gerenciar Produtos</button></a> <%-- ADICIONE ESTE LINK --%>
+        </div>
+    </section>
     </main>
 
     <%-- ATENÇÃO AO CAMINHO DO FOOTER: --%>

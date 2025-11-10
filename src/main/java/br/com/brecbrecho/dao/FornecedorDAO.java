@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -134,5 +136,47 @@ public class FornecedorDAO {
 			return false;
 		}
 	}
+	public List<Fornecedor> listarTodosFornecedores() {
+        List<Fornecedor> fornecedores = new ArrayList<>();
+        String sql = "SELECT * FROM Fornecedor ORDER BY nome_loja";
+        
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            
+            while(rs.next()) {
+                Fornecedor f = new Fornecedor();
+                f.setIdFornecedor(rs.getInt("id_fornecedor"));
+                f.setNomeLoja(rs.getString("nome_loja"));
+                f.setEmail(rs.getString("email"));
+                f.setCpfCnpj(rs.getString("cpf_cnpj"));
+                f.setTelefone(rs.getString("telefone"));
+                fornecedores.add(f);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return fornecedores;
+    }
 
+    /**
+     * (ADMIN) Exclui um fornecedor pelo ID.
+     */
+    public boolean excluirFornecedor(int idFornecedor) {
+        // NOTA: No nosso banco, deletar um Fornecedor deletará
+        // todos os seus Produtos em cascata (ON DELETE CASCADE)
+        String sql = "DELETE FROM Fornecedor WHERE id_fornecedor = ?";
+        
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, idFornecedor);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
